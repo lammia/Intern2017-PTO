@@ -76,8 +76,8 @@ $list1 = DB::table('pto_request')
             <th style="color: #fff">Reason</th>
             <th style="color: #fff">Rejected</th>
             <th style="color: #fff">Admin</th> 
-            <th style="color: #fff">Edit</th>
-            <th style="color: #fff">Delete</th>                              
+            <th style="color: #fff">Action</th>
+                              
         </tr>
     </thead> 
     <tfoot class="aaa">
@@ -91,9 +91,6 @@ $list1 = DB::table('pto_request')
             <th style="color: #000">DateStart</th>
             <th style="color: #000">DateEnd</th>
 
-
-
-
         </tr>
     </tfoot>                       
     <tbody>                      
@@ -103,17 +100,32 @@ $list1 = DB::table('pto_request')
           <?php foreach ($tem as $key => $value) : ?>
             <td><?php 
                 if($value =='1' && $key=='approvalofadmin') $value='Accept';
-                if($value =='2' && $key=='approvalofadmin') $value='Deny';
+                if($value =='2' && $key=='approvalofadmin') $value='Reject';
                 echo $value; ?></td>
             <?php endforeach; ?>
 
+            <td style="width: 150px">
+            <div style="float: left;">
             <?php if($value == 'Accept'){ ?>
-            <td><a href="editPtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-success" >Edit</a></td>
+            <a href="editPtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-success" >Edit</a>
+            </div>
+            <div style="float: right;">
+            <a href="deletePtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-danger" 
+              onclick="return confirmAction()" >Delete</a>
+            </div>
+            </td>
             <?php }
-            else { ?> <td></td> <?php } ?>                     
-
-            <td><a href="deletePtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-danger" 
-              onclick="return confirmAction()" >Delete</a></td>
+            else { ?>
+            <div style="float: left;">
+            <a disabled="disabled" href="editPtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-success" >Edit</a>
+            </div>
+            <div style="float: right;">
+            <a disabled="disabled" href="deletePtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-danger" 
+              onclick="return confirmAction()" >Delete</a>
+            </div>
+            </td>
+            <?php }?>                     
+            
           </tr>
       <?php endforeach; ?>
 
@@ -126,13 +138,27 @@ $list1 = DB::table('pto_request')
                 echo $value; ?></td>
             <?php endforeach; ?>
 
+            <td style="width: 150px">
+            <div style="float: left;">
             <?php if($value == 'Accept'){ ?>
-            <td><a href="editPtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-success" >Edit</td>
+            <a href="editPtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-success" >Edit</a>
+            </div>
+            <div style="float: right;">
+            <a href="deletePtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-danger"
+              onclick="return confirmAction()" >Delete</a>
+            </div>
+            </td>
             <?php }
-            else { ?> <td></td> <?php } ?>
-
-            <td><a href="deletePtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-danger"
-              onclick="return confirmAction()" >Delete</a></td>
+            else { ?>
+            <div style="float: left;">
+            <a disabled="disabled" href="editPtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-success" >Edit</a>
+            </div>
+            <div style="float: right;">
+            <a disabled="disabled" href="deletePtoOfAll/<?php echo $tem->rqid ; ?>" class ="btn btn-danger" 
+              onclick="return confirmAction()" >Delete</a>
+            </div>
+            </td>
+            <?php }?> 
           </tr>
       <?php endforeach; ?>
 

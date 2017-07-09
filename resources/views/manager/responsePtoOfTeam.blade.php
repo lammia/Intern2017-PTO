@@ -70,7 +70,7 @@ $dem = $list->count();
         </a>
         </div>
         <div style="float: right;">
-        <a href="denyPtoOfTeam/<?php echo $list[$i]->rqid ; ?>" class ="btn btn-danger">Deny</a>
+        <a href="denyPtoOfTeam/<?php echo $list[$i]->rqid ; ?>" class ="btn btn-danger">Reject</a>
         </div>
         </td>                            
     </tr>

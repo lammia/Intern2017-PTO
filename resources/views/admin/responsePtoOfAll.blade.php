@@ -55,19 +55,18 @@
           <h3 style="color: blue" align="center">PTO OF TEAM</h3>
           <thead>
             <tr align="center" style="background:pink">
-              <th style="color: #fff">RqId</th>                                                             
-              <th style="color: #fff">Email</th>
-              <th style="color: #fff">FullName</th>
+              <th style="color: #fff; text-align: center">RqId</th>                                                             
+              <th style="color: #fff; text-align: center">Email</th>
+              <th style="color: #fff; text-align: center">FullName</th>
 
-              <th style="color: #fff">TeamName</th>
+              <th style="color: #fff; text-align: center">TeamName</th>
 
-              <th style="color: #fff">DateofRequest</th>
-              <th style="color: #fff">DateStart</th>
-              <th style="color: #fff">DateEnd</th>
-              <th style="color: #fff">Reason</th>  
+              <th style="color: #fff; text-align: center">DateofRequest</th>
+              <th style="color: #fff; text-align: center">DateStart</th>
+              <th style="color: #fff; text-align: center">DateEnd</th>
+              <th style="color: #fff; text-align: center">Reason</th>  
 
-              <th style="color: #fff">Accept</th>
-              <th style="color: #fff">Deny</th>                         
+              <th style="color: #fff; text-align: center">Action</th>      
             </tr>
           </thead>
           @for($i=0;$i<$dem;$i++)
@@ -85,39 +84,44 @@
               <td><?php print_r($list[$i]->dateend); ?></td>
               <td><?php print_r($list[$i]->reason); ?></td> 
 
-              <td><a href="acceptPtoOfAll/<?php echo $list[$i]->rqid ; ?>" class ="btn btn-success">Accept</a></td>            
+            
+              <td style="width: 170px">
+              <div style="float: left;">
+                <a href="acceptPtoOfAll/<?php echo $list[$i]->rqid ; ?>" class ="btn btn-success">Accept</a>
+              </div>           
               
-      <!--<td><button type="Submit" class="btn btn-danger"> Deny </button></td>
-        -->      
-  <td><button type="Submit" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $list[$i]->rqid; ?> ">Deny</button>      
-        
-          <form action="denyPtoOfAll/<?php echo $list[$i]->rqid ; ?>" method ="get"> 
-            <!-- Modal -->             
-            <div id="<?php echo $list[$i]->rqid ; ?>" class="modal fade" role="dialog">  <div class="modal-dialog">
-              <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" align="left">Form Rejected</h4>
-                  </div>
-                <div class="modal-body">
-
-                <table class="table table-hover table-bordered" style="border-collapse:collapse;">
-                  <td>Reason</td>
-                  <td><textarea type="text" class="form-control" name="deny"></textarea></td>
-                  </table>
-                </div>
-                <div class="modal-footer">
-                <button type="Submit" class="btn btn-success">Submit</button>        
-                </div>
-                  </div>
+              <div style="float: right;">
+                <button type="Submit" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $list[$i]->rqid; ?> ">Reject</button>
               </div>
-            </div>
-          </form> 
-     </td>   
-           </tr>
-         </tbody>
+
+                    
+                  <form action="denyPtoOfAll/<?php echo $list[$i]->rqid ; ?>" method ="get"> 
+                        <!-- Modal -->             
+                        <div id="<?php echo $list[$i]->rqid ; ?>" class="modal fade" role="dialog">  <div class="modal-dialog">
+                          <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title" align="left">Form Rejected</h4>
+                              </div>
+                            <div class="modal-body">
+
+                            <table class="table table-hover table-bordered" style="border-collapse:collapse;">
+                              <td>Reason</td>
+                              <td><textarea type="text" class="form-control" name="deny"></textarea></td>
+                              </table>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="Submit" class="btn btn-success">Submit</button>        
+                            </div>
+                              </div>
+                          </div>
+                        </div>
+                      </form> 
+                 </td>   
+                       </tr>
+                     </tbody>
 
          @endfor
          @for($i=0;$i<$dem1;$i++)
@@ -132,10 +136,16 @@
             <td><?php print_r($list1[$i]->dateofrequest); ?></td>
             <td><?php print_r($list1[$i]->datestart); ?></td>
             <td><?php print_r($list1[$i]->dateend); ?></td>
-            <td><?php print_r($list1[$i]->reason); ?></td> 
-            <td><a href="acceptPtoOfAll/<?php echo $list1[$i]->rqid ; ?>" class ="btn btn-success">Accept</a></td>
+            <td><?php print_r($list1[$i]->reason); ?></td>
 
-           <td><button type="Submit" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $list1[$i]->rqid ; ?>">Deny</button>      
+            <td style="width: 170px">
+            <div style="float: left;">
+              <a href="acceptPtoOfAll/<?php echo $list1[$i]->rqid ; ?>" class ="btn btn-success">Accept</a>
+            </div>
+
+            <div style="float: right;">
+            <button type="Submit" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $list1[$i]->rqid ; ?>">Reject</button>
+            </div>
         
           <form action="denyPtoOfAll/<?php echo $list1[$i]->rqid ; ?>" method ="get"> 
             <!-- Modal -->             

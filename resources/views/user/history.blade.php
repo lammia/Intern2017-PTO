@@ -94,13 +94,13 @@ $dem = $list->count();
          </form>
        </div>
 
-       <form action="/editrequest/<?php echo $list[$i]->rqid; ?>" method ="post"> 
+       <form id="modelForm" action="/editrequest/<?php echo $list[$i]->rqid; ?>" method ="post"> 
         <input type="hidden" name="_token"  value="{!!csrf_token()!!}">
         <!-- Modal -->
 
 
         <div id="<?php echo $list[$i]->rqid; ?>" class="modal fade" role="dialog">
-
+        
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div style="background:#CCCCCC " class="modal-header">
@@ -147,9 +147,26 @@ $dem = $list->count();
                   </div>
                 </div>
 
+                <div class="row">
+
+                  <div class="col-md-7">@if (Session::has('flash_message1'))
+
+
+                    <div class="alert alert-danger" role="alert">
+                      {!! Session::get('flash_message1') !!}
+                    </div>
+                    @endif
+                    @if (Session::has('flash_message2'))
+                    <div class="alert alert-success" role="alert">
+                      {!! Session::get('flash_message2') !!}
+                    </div>
+                    @endif  
+                  </div>
+                </div>
+
               </div>
               <div class="modal-footer">
-                <button type="Submit" class="btn btn-primary">Save</button>
+                <button type="Submit" name="savebtn" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
@@ -159,8 +176,13 @@ $dem = $list->count();
       </form>
     </td>
 
-    @else <td><button type="Submit" disabled="disabled" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $list[$i]->rqid ; ?>">Edit</button>
-    <button type="Submit" disabled="disabled" class="btn btn-danger">Delete</button></td>
+    @else <td style="width: 150px">
+      <div style="float: left;">
+      <button type="Submit" disabled="disabled" class="btn btn-danger" data-toggle="modal" data-target="#<?php echo $list[$i]->rqid ; ?>">Edit</button>
+      </div>
+      <div style="float: right;">
+      <button type="Submit" disabled="disabled" class="btn btn-danger">Delete</button></td>
+      </div>
 
     @endif
 
@@ -170,22 +192,6 @@ $dem = $list->count();
 </tbody>
 @endfor
 </table>
-<div class="row">
-
-  <div class="col-md-7">@if (Session::has('flash_message1'))
-
-
-    <div class="alert alert-danger" role="alert">
-      {!! Session::get('flash_message1') !!}
-    </div>
-    @endif
-    @if (Session::has('flash_message2'))
-    <div class="alert alert-success" role="alert">
-      {!! Session::get('flash_message2') !!}
-    </div>
-    @endif  
-  </div>
-</div>
 
 
 @stop
