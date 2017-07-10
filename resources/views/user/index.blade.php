@@ -18,12 +18,7 @@
   <link href="{{ asset('css/mycss.css') }}" rel="stylesheet"/>
   <!-- jQuery -->
   <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
-  <script>
-  $( "#modelForm" ).submit(function( event ) {
- 
-  // Stop form from submitting normally
-  event.preventDefault();
-  </script>
+
 
   @yield('date')
   

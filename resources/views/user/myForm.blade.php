@@ -1,11 +1,3 @@
-
-@extends('user.index')
-
-@section('title')
-@parent Registers
-@stop
-
-
 @section('date')	
 
 
@@ -23,7 +15,7 @@
 @stop
 
 
-@section('content')
+@section('content1')
 <!-- top tiles -->
 
 <div class="">
@@ -143,5 +135,5 @@
 	</div>
 </div>
 
-@stop
+@show
 

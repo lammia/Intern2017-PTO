@@ -10,6 +10,12 @@
 
 @section('content')
 
+<script>
+  function keepModel(){
+     $( "#modelForm" ).modal();  
+  }
+  </script>
+
 <?php  
 /*------------------------Lam them cho Kenny-----------------------*/
 $value1 = Session::get('session_id');
@@ -166,7 +172,7 @@ $dem = $list->count();
 
               </div>
               <div class="modal-footer">
-                <button type="Submit" name="savebtn" class="btn btn-primary">Save</button>
+                <button type="Submit" onClick="keepModel()" name="savebtn" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>

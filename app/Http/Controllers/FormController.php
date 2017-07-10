@@ -61,7 +61,8 @@ class FormController extends Controller
    
  }
  public function viewform (){
-  return view('user.myForm');
+  //return view('user.myForm');
+    return view('user.registerpto');
 } 
 
 }
